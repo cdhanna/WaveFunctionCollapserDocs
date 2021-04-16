@@ -38,22 +38,38 @@
             Testing comments in Generation Space!!!
             </summary>
         </member>
+        <member name="T:BrewedInk.WFC.Module">
+            <summary>
+            In the WFC algorithm, a module is a possibility for some <see cref="T:BrewedInk.WFC.Slot"/>
+            </summary>
+        </member>
         <member name="T:BrewedInk.WFC.Slot">
              <summary>
-             In the WFC algorithm, a Slot is a place that holds one module. As the Wave Function is being collapsed, the slot may have many potential modules available to it.
+             In the WFC algorithm, a Slot is a place that holds one <see cref="T:BrewedInk.WFC.Module"/>. As the Wave Function is being collapsed, the slot may have many potential modules available to it.
              As the collapse continues, modules are removed as possibilities from the slot, until there is only one module possible for the slot.
             
              </summary>
         </member>
-        <member name="M:BrewedInk.WFC.ModuleConstraint.ShouldRemoveModule(BrewedInk.WFC.SlotEdge,BrewedInk.WFC.GenerationSpace,BrewedInk.WFC.Module,BrewedInk.WFC.ModuleSet)">
+        <member name="F:BrewedInk.WFC.Slot.Coordinate">
             <summary>
-            
+            The slot's position in the larger generation space. 
             </summary>
-            <param name="edge"></param>
-            <param name="space"></param>
-            <param name="module"></param>
-            <param name="remove"></param>
-            <returns></returns>
+        </member>
+        <member name="T:BrewedInk.WFC.SlotEdge">
+            <summary>
+            A SlotEdge is the connection between two slots. In a simple 2D 1X2 grid case, there are two slots, and one slot edge connecting them.
+            The term "edge" comes from Graph Theory. These edges are directional.
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.SlotEdge.Source">
+            <summary>
+            The origin slot of the edge. 
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.SlotEdge.Target">
+            <summary>
+            The destination slot of the edge. 
+            </summary>
         </member>
     </members>
 </doc>

@@ -5,4 +5,4 @@ The module that is no longer available for the slot
 public Module module;
 ```
 #### Field Value
-[BrewedInk.WFC.Module](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.Module 'BrewedInk.WFC.Module')  
+[Module](./BrewedInk-WFC-Module.md 'BrewedInk.WFC.Module')  
