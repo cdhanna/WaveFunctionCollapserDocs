@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>brewkedink.wfc</name>
+    </assembly>
+    <members>
+        <member name="T:BrewedInk.WFC.WFCProgress">
+             <summary>
+             The <see cref="T:BrewedInk.WFC.WFCProgress"/> class represents a unit of progress in the WFC algorithm. As the algorithm is run, a sequence of WCFProgress items will be returned.
+             Different types of progress will be returned, and you can switch on the type to gain insights to the algorithm's decisions...
+            
+             <see cref="T:BrewedInk.WFC.SlotModuleRemoved"/>
+             <see cref="T:BrewedInk.WFC.WFCError"/>
+             </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.WFCError">
+            <summary>
+            A WFCError instance could be returned by the WFC algorithm. If you receive one of these instances, it means something with the process has broken.
+            </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.GenerationSpace">
+            <summary>
+            Testing comments in Generation Space!!!
+            </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.ModuleConstraint.ShouldRemoveModule(BrewedInk.WFC.SlotEdge,BrewedInk.WFC.GenerationSpace,BrewedInk.WFC.Module,BrewedInk.WFC.ModuleSet)">
+            <summary>
+            
+            </summary>
+            <param name="edge"></param>
+            <param name="space"></param>
+            <param name="module"></param>
+            <param name="remove"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
