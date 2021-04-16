@@ -18,10 +18,32 @@
             A WFCError instance could be returned by the WFC algorithm. If you receive one of these instances, it means something with the process has broken.
             </summary>
         </member>
+        <member name="T:BrewedInk.WFC.SlotModuleRemoved">
+            <summary>
+            A progress instance that explains what module was removed from a slot's possibility space.
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.SlotModuleRemoved.slot">
+            <summary>
+            The slot that has had a module removed.
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.SlotModuleRemoved.module">
+            <summary>
+            The module that is no longer available for the slot
+            </summary>
+        </member>
         <member name="T:BrewedInk.WFC.GenerationSpace">
             <summary>
             Testing comments in Generation Space!!!
             </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.Slot">
+             <summary>
+             In the WFC algorithm, a Slot is a place that holds one module. As the Wave Function is being collapsed, the slot may have many potential modules available to it.
+             As the collapse continues, modules are removed as possibilities from the slot, until there is only one module possible for the slot.
+            
+             </summary>
         </member>
         <member name="M:BrewedInk.WFC.ModuleConstraint.ShouldRemoveModule(BrewedInk.WFC.SlotEdge,BrewedInk.WFC.GenerationSpace,BrewedInk.WFC.Module,BrewedInk.WFC.ModuleSet)">
             <summary>
