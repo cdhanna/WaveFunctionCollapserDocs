@@ -6,7 +6,7 @@ Developed by Chris Hanna (mascarading as Brewed Ink)
 The Wave Function Collapse algorithm is a popular procedural generation tool. This documentation describes how to use the Wave Function Collapser in Unity. 
 
 - [Code Docs](./CodeDocs/BrewedInk-WFC.md 'Code docs')
-- [Getting Started](./wiki/Getting-Started 'Getting Started')
+- [Getting Started](../../wiki/Getting-Started 'Getting Started')
 - Examples
     - Ascii Roads
     - Soduko
