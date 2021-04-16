@@ -4,6 +4,21 @@
         <name>brewkedink.wfc</name>
     </assembly>
     <members>
+        <member name="T:BrewedInk.WFC.SlotCannotHaveEmptyModuleSetException">
+            <summary>
+            An exception that is thrown when the WFC tries to remove the last remaining module from a slot's possibility space. A slot cannot have zero possibilities.
+            </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.SlotCannotSelectUnavailableModule">
+            <summary>
+            An exception that is thrown if a slot tries to select a module that is no longer possible, due to constraints.
+            </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.ModuleSet">
+            <summary>
+            A ModuleSet is a collection of modules. It is a HashSet, with a few helpful methods attached to it. 
+            </summary>
+        </member>
         <member name="T:BrewedInk.WFC.WFCProgress">
              <summary>
              The <see cref="T:BrewedInk.WFC.WFCProgress"/> class represents a unit of progress in the WFC algorithm. As the algorithm is run, a sequence of WCFProgress items will be returned.
@@ -41,6 +56,18 @@
         <member name="T:BrewedInk.WFC.Module">
             <summary>
             In the WFC algorithm, a module is a possibility for some <see cref="T:BrewedInk.WFC.Slot"/>
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.Module.Display">
+            <summary>
+            Every module must have a unique display name. This name is used for hashing and equality checks.
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.Module.Constraints">
+            <summary>
+            Every module has a set of <see cref="T:BrewedInk.WFC.ModuleConstraint"/>. At the start of the WFC algorithm, every module is possible in all slots.
+            The constraints for the module in each slot are all still plausible. As the Wave Function collapses, module possibilities are removed, and various constraints become
+            impossible to fulfill. When that happens, this module becomes invalid itself. 
             </summary>
         </member>
         <member name="T:BrewedInk.WFC.Slot">
