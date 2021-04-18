@@ -7,4 +7,4 @@ impossible to fulfill. When that happens, this module becomes invalid itself.
 public List<ModuleConstraint> Constraints;
 ```
 #### Field Value
-[System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[BrewedInk.WFC.ModuleConstraint](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleConstraint 'BrewedInk.WFC.ModuleConstraint')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')  
+[System.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List 'System.Collections.Generic.List')  

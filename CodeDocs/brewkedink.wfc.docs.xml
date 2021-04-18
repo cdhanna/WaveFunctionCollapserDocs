@@ -53,6 +53,30 @@
             Testing comments in Generation Space!!!
             </summary>
         </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.#ctor(System.Collections.Generic.List{BrewedInk.WFC.Slot},System.Collections.Generic.List{BrewedInk.WFC.SlotEdge},BrewedInk.WFC.ModuleSet,System.Nullable{System.Int32})">
+            <summary>
+            Create a new instance of the WFC algorithm. Each time you construct an instance of the Generation Space, you are setting up a new superposition with nothing collapsed.
+            You can also use utility methods to create a new Generation space. <see cref="M:BrewedInk.WFC.GenerationSpace.From2DGrid(System.Int32,System.Int32,BrewedInk.WFC.ModuleSet,System.Nullable{System.Int32},System.Action{System.Collections.Generic.List{BrewedInk.WFC.Slot},System.Collections.Generic.List{BrewedInk.WFC.SlotEdge}})"/> 
+            </summary>
+            <param name="slots">A set of slots to perform the WFC on. Every slot will be assumed to have every module as a possibility</param>
+            <param name="edges">A set of edges that connect the slots. </param>
+            <param name="allModules">A set of all the modules, with the constraints already provided</param>
+            <param name="seed">An optional random seed. If you provide the same seed, the WFC algorithm will produce the same output given the same inputs. </param>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.GetSlot(UnityEngine.Vector3Int)">
+            <summary>
+            Find a slot given a position. If no slot exists at the given position, this method will return null.
+            </summary>
+            <param name="coordinate"></param>
+            <returns>The slot at the given position, or null if none exists</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.GetSlotOptions(BrewedInk.WFC.Slot)">
+            <summary>
+            
+            </summary>
+            <param name="slot"></param>
+            <returns></returns>
+        </member>
         <member name="T:BrewedInk.WFC.Module">
             <summary>
             In the WFC algorithm, a module is a possibility for some <see cref="T:BrewedInk.WFC.Slot"/>
