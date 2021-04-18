@@ -1,7 +1,7 @@
 ﻿# Wave Function Collapser
 ## A Unity Asset for procedural generation
 
-Developed by Chris Hanna (mascarading as Brewed Ink)
+Developed by Chris Hanna (mascarading as [Brewed Ink](https://cdhanna.github.io/brewedink/))
 
 The Wave Function Collapse algorithm is a popular procedural generation tool. This documentation describes how to use the Wave Function Collapser in Unity. 
 
