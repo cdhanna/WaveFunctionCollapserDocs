@@ -1,7 +1,9 @@
 ## BrewedInk.WFC Namespace
 ### Classes
+- [AdjacencyConstraint](./BrewedInk-WFC-AdjacencyConstraint.md 'BrewedInk.WFC.AdjacencyConstraint')
 - [GenerationSpace](./BrewedInk-WFC-GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 - [Module](./BrewedInk-WFC-Module.md 'BrewedInk.WFC.Module')
+- [ModuleConstraint](./BrewedInk-WFC-ModuleConstraint.md 'BrewedInk.WFC.ModuleConstraint')
 - [ModuleSet](./BrewedInk-WFC-ModuleSet.md 'BrewedInk.WFC.ModuleSet')
 - [Slot](./BrewedInk-WFC-Slot.md 'BrewedInk.WFC.Slot')
 - [SlotCannotHaveEmptyModuleSetException](./BrewedInk-WFC-SlotCannotHaveEmptyModuleSetException.md 'BrewedInk.WFC.SlotCannotHaveEmptyModuleSetException')

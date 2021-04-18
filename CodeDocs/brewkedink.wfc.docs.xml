@@ -50,7 +50,8 @@
         </member>
         <member name="T:BrewedInk.WFC.GenerationSpace">
             <summary>
-            Testing comments in Generation Space!!!
+            The Generation Space is the main access point for the WFC algorithm. The Generation Space holds a directed graph of Slots, and a set of all possible modules per slot.
+            The Generation Space has methods for collapsing the superposition of the Slots, until all slots only have one module option left.
             </summary>
         </member>
         <member name="M:BrewedInk.WFC.GenerationSpace.#ctor(System.Collections.Generic.List{BrewedInk.WFC.Slot},System.Collections.Generic.List{BrewedInk.WFC.SlotEdge},BrewedInk.WFC.ModuleSet,System.Nullable{System.Int32})">
@@ -72,10 +73,103 @@
         </member>
         <member name="M:BrewedInk.WFC.GenerationSpace.GetSlotOptions(BrewedInk.WFC.Slot)">
             <summary>
-            
+            At any given moment, a slot may have many possible modules available to it. This method will give you the set of possible modules available on a slot.
             </summary>
-            <param name="slot"></param>
-            <returns></returns>
+            <param name="slot">The slot whose available modules will be returned</param>
+            <returns>A set of modules representing all possible modules for the given slot</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.TryGetOnlyOption(BrewedInk.WFC.Slot,BrewedInk.WFC.Module@)">
+             <summary>
+             At any given moment, a slot may have many possible modules available to it. However, eventually, a slot will only have one possible module remaining.
+             This method will help you identify when there is only one module left per slot.
+             If there is only one module left for the given slot, this method will return true and store the assigned module in the out parameter. If there is more than one module possible, the method will return false, and the out variable will be null.
+            
+             You can also retrieve all of the available slot modules with the <c> GenerationSpace.GetSlotOptions </c> method.
+             <see cref="M:BrewedInk.WFC.GenerationSpace.GetSlotOptions(BrewedInk.WFC.Slot)"/>
+             </summary>
+             <param name="slot">The slot whose only remaining available module will be checked. </param>
+             <param name="module">An out variable for the only remaining available module. After the method is invoked, the value of the module will be the last module for the slot, or null if there are more than one modules remaining.</param>
+             <returns>true if there was only one module available, or false otherwise. </returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.CollapseSlot(BrewedInk.WFC.Slot,System.Nullable{System.Int32})">
+            <summary>
+            Given a slot with many module possibilities, collapse the possibility space so that only one module is possible for the given slot.
+            This will cause many propagation events, and may cause other slots to collapse to a single module possibility as well.
+            If the given slot has many module possibilities, one module will be selected at random.
+            </summary>
+            <param name="slot">The slot to collapse to a single module possibility</param>
+            <param name="moduleOffset">An optional offset to control which module is selected randomly. If there were N modules available, a random number is produced in the range, (0, N]. The moduleOffset is added to the random number, and then the sum is modded by N, producing a number within range. The module that will be selected is found at the modded sum.</param>
+            <returns>A sequence of <see cref="T:BrewedInk.WFC.WFCProgress"/> representing the completion of the collapse operation. The resulting sequence must be enumerated, or the collapse won't complete. </returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.CollapseLowestEntropySlot">
+             <summary>
+             Collapse the superposition of some slot. The slot that is selected is the slot in the Generation Space with the lowest entropy. A Slot's entropy is found by taking the count of available modules remaining at the slot.
+             This will cause many propagation events, and may cause other slots to collapse to a single module possibility as well.
+             By default, WFC always prefer to collapse the slot with the lowest entropy, because it is less likely to produce an invalid outcome.
+            
+             If there are multiple slots with the same entropy, the first one detected in the Generation Space's internal data structure will be used. It is not random. It depends on how the slots were created in the constructor of the Generation Space.
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.Reset">
+            <summary>
+            Reset all slot superpositions so that all modules are likely again. 
+            </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.Collapse">
+             <summary>
+             Run the WFC algorithm to completion on the Generation Space.
+             This method will keep on collapsing the slot with the lowest entropy until all slots have been collapsed to a single module possibility.
+            
+             This method may take a long time to complete if the Generation Space is large. You should interweave the resulting progress set with a Coroutine with render frames. 
+             </summary>
+             <returns>A sequence of <see cref="T:BrewedInk.WFC.WFCProgress"/> representing the completion of the collapse operation. The entire sequence must be enumerated or the collapse won't finish.</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.CollapseSlot(BrewedInk.WFC.Slot,BrewedInk.WFC.Module)">
+            <summary>
+            Collapse a slot to a given module outcome.
+            If a slot had N possible modules, after this method runs, the slot would only have 1 possible module.
+            This will cause many propagation events, and may cause other slots to collapse to a single module possibility as well.
+            </summary>
+            <param name="slot">A slot to collapse to one module possibility</param>
+            <param name="module">the module that will be only remaining possibility for the given slot</param>
+            <returns>A sequence of <see cref="T:BrewedInk.WFC.WFCProgress"/> representing the progress of the collapse operation. The sequence must be enumerated, or the collapse won't finish.</returns>
+            <exception cref="T:BrewedInk.WFC.SlotCannotSelectUnavailableModule">You cannot select a module for a slot if the slot doesn't already contain the module in its superposition. </exception>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.RemoveSlotOption(BrewedInk.WFC.Slot,BrewedInk.WFC.Module)">
+             <summary>
+             A small way to collapse the wave function. At some given slot, this method removes some given module from the set of possible modules at the slot.
+             Before this method is run, the given slot may have N possible modules. After the method is run, that slot will have N-1 possible modules.
+             This method collapses the superposition at the given slot, which also means that neighboring slots may need to remove modules given the new position.
+             This method triggers a propagation event in the Generation Space. As such, it returns a consumable sequence of WFCProgress elements.
+             The faster you consume the sequence, the faster the entire propagation phase happens. You may wish to sow render frames between calls. The sequence must be iterated through, or the propagation won't finish.
+             
+            
+             </summary>
+             <param name="startingSlot">A slot to remove a module option from</param>
+             <param name="removeModule">The module to be removed from the slot</param>
+             <returns>A sequence of <see cref="T:BrewedInk.WFC.WFCProgress"/> representing the progress of the propagation event. The sequence must be iterated through, or the propagation won't occur. </returns>
+             <exception cref="T:BrewedInk.WFC.SlotCannotHaveEmptyModuleSetException">An exception will be thrown if removing a module from a slot would cause the slot to have zero possible modules. A slot must always have at least one possibility.</exception>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.GetEdges(BrewedInk.WFC.Slot)">
+            <summary>
+            Get a Slot's edges.
+            <see cref="T:BrewedInk.WFC.SlotEdge"/>
+            </summary>
+            <param name="slot">The slot to get the edges for.</param>
+            <returns>A list of edges for the given slot</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.From2DGrid(System.Int32,System.Int32,BrewedInk.WFC.ModuleSet,System.Nullable{System.Int32},System.Action{System.Collections.Generic.List{BrewedInk.WFC.Slot},System.Collections.Generic.List{BrewedInk.WFC.SlotEdge}})">
+            <summary>
+            A utility method for building a Generation Space in the form of a 2D grid.
+            All Generation Spaces are directed graphs, and the resulting Generation Space from this method will be a graph representing a 2D grid. Each cell in the grid will have neighbors to the west, east, south, and north. There are no diagonal neighbors.
+            </summary>
+            <param name="width">The width of the resulting 2D grid Generation Space</param>
+            <param name="height">The height of the resulting 2D grid Generation Space</param>
+            <param name="modules">The set of all possible modules, with constraints prepopulated. Every Slot that is created in this Generation Space will have all modules available at the start of the WFC.</param>
+            <param name="seed">An optional seed that controls how the WFC decides random operations. </param>
+            <param name="prepareSpace">An optional callback to control how edges are created in the 2D grid. If this parameter is left null, every slot will have edges to the west, east, south, and north. If you need to change how the edges are created, remove certain edges, or add additional edges, you can provide your own implementation of this callback. If you provide a callback value, you are responsible for populating the entire List of SlotEdges per given Slot.</param>
+            <returns>A Generation Space representing a 2D grid of slots where every slot has every module available to it at the start of the WFC. </returns>
         </member>
         <member name="T:BrewedInk.WFC.Module">
             <summary>
@@ -105,6 +199,41 @@
             <summary>
             The slot's position in the larger generation space. 
             </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.AdjacencyConstraint">
+            <summary>
+            A WFC constraint that enforces neighboring modules per slot.
+            For example, 
+            This constraint lets a module express that its western neighbor must be of a certain module. 
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.AdjacencyConstraint.Delta">
+            <summary>
+            The positional difference this constraint applies for. If the module is being tested between two slots (A, and B), the constraint only applies if the positional difference between A and B equals the Delta.  
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.AdjacencyConstraint.NeedsOneOf">
+            <summary>
+            A set of possible module values that can exist at a slot with the given Delta. 
+            </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.ModuleConstraint">
+            <summary>
+            The base type for all WFC constraints. Feel free to subclass this type and make your own constraints. 
+            </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.ModuleConstraint.ShouldRemoveModule(BrewedInk.WFC.SlotEdge,BrewedInk.WFC.GenerationSpace,BrewedInk.WFC.Module,BrewedInk.WFC.ModuleSet)">
+            <summary>
+            The only required method of a WFC constraint.
+            Given some edge and some module-in-question, should the module-in-question be removed from the edge's source's possibility space?
+            
+            When the WFC algorithm propagates information, every possible module per slot is checked against every neighboring slot. If ANY neighboring slot has a constraint that disqualifies the module-in-question, the module will be removed from the source's superposition. This in turn, causes a new propagation wave.
+            </summary>
+            <param name="edge">The edge whose source slot's superposition is being checked. If the method returns true, the given module will be removed from the edge's source's slot's superposition.</param>
+            <param name="space">The generation space that this edge and module are apart of. The space is made available so that checks can be made for other available modules at the edge source and destination slots. </param>
+            <param name="module">The module-in-question. Should this module be removed from the edge source, because of the edge destination?</param>
+            <param name="modulesToRemove">An advanced capability. Anything in this set will be removed from the edge source's superposition. You can manually add to the set, but only if you are extremely confident. </param>
+            <returns></returns>
         </member>
         <member name="T:BrewedInk.WFC.SlotEdge">
             <summary>
