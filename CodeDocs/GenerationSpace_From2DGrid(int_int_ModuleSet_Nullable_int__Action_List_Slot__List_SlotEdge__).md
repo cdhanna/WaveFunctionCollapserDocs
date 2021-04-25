@@ -15,7 +15,7 @@ The width of the resulting 2D grid Generation Space
 The height of the resulting 2D grid Generation Space
   
 <a name='BrewedInk_WFC_GenerationSpace_From2DGrid(int_int_BrewedInk_WFC_ModuleSet_System_Nullable_int__System_Action_System_Collections_Generic_List_BrewedInk_WFC_Slot__System_Collections_Generic_List_BrewedInk_WFC_SlotEdge__)_modules'></a>
-`modules` [BrewedInk.WFC.ModuleSet](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleSet 'BrewedInk.WFC.ModuleSet')  
+`modules` [ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')  
 The set of all possible modules, with constraints prepopulated. Every Slot that is created in this Generation Space will have all modules available at the start of the WFC.
   
 <a name='BrewedInk_WFC_GenerationSpace_From2DGrid(int_int_BrewedInk_WFC_ModuleSet_System_Nullable_int__System_Action_System_Collections_Generic_List_BrewedInk_WFC_Slot__System_Collections_Generic_List_BrewedInk_WFC_SlotEdge__)_seed'></a>

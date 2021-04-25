@@ -15,7 +15,7 @@ A set of slots to perform the WFC on. Every slot will be assumed to have every m
 A set of edges that connect the slots. 
   
 <a name='BrewedInk_WFC_GenerationSpace_GenerationSpace(System_Collections_Generic_List_BrewedInk_WFC_Slot__System_Collections_Generic_List_BrewedInk_WFC_SlotEdge__BrewedInk_WFC_ModuleSet_System_Nullable_int_)_allModules'></a>
-`allModules` [BrewedInk.WFC.ModuleSet](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleSet 'BrewedInk.WFC.ModuleSet')  
+`allModules` [ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')  
 A set of all the modules, with the constraints already provided
   
 <a name='BrewedInk_WFC_GenerationSpace_GenerationSpace(System_Collections_Generic_List_BrewedInk_WFC_Slot__System_Collections_Generic_List_BrewedInk_WFC_SlotEdge__BrewedInk_WFC_ModuleSet_System_Nullable_int_)_seed'></a>

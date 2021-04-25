@@ -9,7 +9,7 @@ public float GetEntropy(BrewedInk.WFC.ModuleSet modules);
 ```
 #### Parameters
 <a name='BrewedInk_WFC_GenerationSpace_GetEntropy(BrewedInk_WFC_ModuleSet)_modules'></a>
-`modules` [BrewedInk.WFC.ModuleSet](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleSet 'BrewedInk.WFC.ModuleSet')  
+`modules` [ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')  
 A set of modules
   
 #### Returns

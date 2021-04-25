@@ -5,4 +5,4 @@ A set of possible module values that can exist at a slot with the given Delta.
 public ModuleSet NeedsOneOf;
 ```
 #### Field Value
-[BrewedInk.WFC.ModuleSet](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleSet 'BrewedInk.WFC.ModuleSet')
+[ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')

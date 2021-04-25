@@ -21,7 +21,7 @@ The generation space that this edge and module are apart of. The space is made a
 The module-in-question. Should this module be removed from the edge source, because of the edge destination?
   
 <a name='BrewedInk_WFC_ModuleConstraint_ShouldRemoveModule(BrewedInk_WFC_SlotEdge_BrewedInk_WFC_GenerationSpace_BrewedInk_WFC_Module_BrewedInk_WFC_ModuleSet)_modulesToRemove'></a>
-`modulesToRemove` [BrewedInk.WFC.ModuleSet](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleSet 'BrewedInk.WFC.ModuleSet')  
+`modulesToRemove` [ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')  
 An advanced capability. Anything in this set will be removed from the edge source's superposition. You can manually add to the set, but only if you are extremely confident. 
   
 #### Returns

@@ -14,6 +14,11 @@
             An exception that is thrown if a slot tries to select a module that is no longer possible, due to constraints.
             </summary>
         </member>
+        <member name="T:BrewedInk.WFC.ModuleSet">
+            <summary>
+            A ModuleSet is a collection of modules. It is a HashSet, with a few helpful methods attached to it. 
+            </summary>
+        </member>
         <member name="T:BrewedInk.WFC.WFCProgress">
              <summary>
              The <see cref="T:BrewedInk.WFC.WFCProgress"/> class represents a unit of progress in the WFC algorithm. As the algorithm is run, a sequence of WCFProgress items will be returned.

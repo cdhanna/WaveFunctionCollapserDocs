@@ -10,6 +10,6 @@ public class WFCProgress
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; WFCProgress  
 
 Derived  
-&#8627; [SlotModuleRemoved](SlotModuleRemoved.md 'BrewedInk.WFC.SlotModuleRemoved')
-&#8627; [SlotModuleSelected](SlotModuleSelected.md 'BrewedInk.WFC.SlotModuleSelected')
+&#8627; [SlotModuleRemoved](SlotModuleRemoved.md 'BrewedInk.WFC.SlotModuleRemoved')  
+&#8627; [SlotModuleSelected](SlotModuleSelected.md 'BrewedInk.WFC.SlotModuleSelected')  
 &#8627; [WFCError](WFCError.md 'BrewedInk.WFC.WFCError')  

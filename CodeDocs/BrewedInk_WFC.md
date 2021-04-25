@@ -25,6 +25,11 @@ In the WFC algorithm, a module is a possibility for some [Slot](Slot.md 'BrewedI
 The base type for all WFC constraints. Feel free to subclass this type and make your own constraints.   
 
 ***
+[ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')
+
+A ModuleSet is a collection of modules. It is a HashSet, with a few helpful methods attached to it.   
+
+***
 [Slot](Slot.md 'BrewedInk.WFC.Slot')
 
 In the WFC algorithm, a Slot is a place that holds one [Module](Module.md 'BrewedInk.WFC.Module'). As the Wave Function is being collapsed, the slot may have many potential modules available to it.  

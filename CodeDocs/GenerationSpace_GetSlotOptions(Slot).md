@@ -10,5 +10,5 @@ public BrewedInk.WFC.ModuleSet GetSlotOptions(BrewedInk.WFC.Slot slot);
 The slot whose available modules will be returned
   
 #### Returns
-[BrewedInk.WFC.ModuleSet](https://docs.microsoft.com/en-us/dotnet/api/BrewedInk.WFC.ModuleSet 'BrewedInk.WFC.ModuleSet')  
+[ModuleSet](ModuleSet.md 'BrewedInk.WFC.ModuleSet')  
 A set of modules representing all possible modules for the given slot
