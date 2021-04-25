@@ -14,18 +14,11 @@
             An exception that is thrown if a slot tries to select a module that is no longer possible, due to constraints.
             </summary>
         </member>
-        <member name="T:BrewedInk.WFC.ModuleSet">
-            <summary>
-            A ModuleSet is a collection of modules. It is a HashSet, with a few helpful methods attached to it. 
-            </summary>
-        </member>
         <member name="T:BrewedInk.WFC.WFCProgress">
              <summary>
              The <see cref="T:BrewedInk.WFC.WFCProgress"/> class represents a unit of progress in the WFC algorithm. As the algorithm is run, a sequence of WCFProgress items will be returned.
              Different types of progress will be returned, and you can switch on the type to gain insights to the algorithm's decisions...
             
-             <see cref="T:BrewedInk.WFC.SlotModuleRemoved"/>
-             <see cref="T:BrewedInk.WFC.WFCError"/>
              </summary>
         </member>
         <member name="T:BrewedInk.WFC.WFCError">
@@ -47,6 +40,45 @@
             <summary>
             The module that is no longer available for the slot
             </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.SlotModuleSelected">
+            <summary>
+            A progress instance that explains what module was selected for a slot. When this progress type shows up, it means the superposition for the given slot has collapsed to the given module.
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.SlotModuleSelected.slot">
+            <summary>
+            The slot whose superposition has collapsed. 
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.SlotModuleSelected.module">
+            <summary>
+            The module that has been selected for the given slot
+            </summary>
+        </member>
+        <member name="T:BrewedInk.WFC.WFCProgressExtensions">
+            <summary>
+            A Utility class for IEnumerable sets of <see cref="T:BrewedInk.WFC.WFCProgress"/>
+            </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressExtensions.RunAsCoroutine(System.Collections.Generic.IEnumerable{BrewedInk.WFC.WFCProgress},UnityEngine.MonoBehaviour,System.Single,System.Action{BrewedInk.WFC.WFCProgress},System.Action)">
+            <summary>
+            A method to run any WFC operation within a Unity Coroutine with frame time budgeting. This method will process as many elements in the WFC operation as possible in on frame, then yield a render frame, and continue the operation on the next frame.
+            This is the recommended way to run WFC operations in a realtime game.
+            </summary>
+            <param name="operation">Any WFC operation. This could be the return value from any Collapse related function in the <see cref="T:BrewedInk.WFC.GenerationSpace"/></param>
+            <param name="context">Some Monobehaviour to run the Coroutine in.</param>
+            <param name="timeBudgetPerFrame">How much is available per frame to operate on the WFC sequence? This should be a low number, so that it doesn't cause hitches in your game.</param>
+            <param name="onProgress">An optional callback that runs every time a WFCProgress element is processed.</param>
+            <param name="onCompleted">An optional callback that runs when the Coroutine has finished processing the WFC operation</param>
+            <returns></returns>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressExtensions.RunAsImmediate(System.Collections.Generic.IEnumerable{BrewedInk.WFC.WFCProgress},System.Action{BrewedInk.WFC.WFCProgress})">
+            <summary>
+            Completely iterate through a WFC operation in one frame. Using this method will likely cause lag in your game, and it is only recommended for testing or advanced use.
+            </summary>
+            <param name="operation">Any WFC operation. This could be the return value from any Collapse related function in the <see cref="T:BrewedInk.WFC.GenerationSpace"/></param>
+            <param name="progressHandler">An optional callback that runs every time a WFCProgress element is processed.</param>
         </member>
         <member name="T:BrewedInk.WFC.GenerationSpace">
             <summary>
@@ -91,14 +123,13 @@
              <param name="module">An out variable for the only remaining available module. After the method is invoked, the value of the module will be the last module for the slot, or null if there are more than one modules remaining.</param>
              <returns>true if there was only one module available, or false otherwise. </returns>
         </member>
-        <member name="M:BrewedInk.WFC.GenerationSpace.CollapseSlot(BrewedInk.WFC.Slot,System.Nullable{System.Int32})">
+        <member name="M:BrewedInk.WFC.GenerationSpace.CollapseSlot(BrewedInk.WFC.Slot)">
             <summary>
             Given a slot with many module possibilities, collapse the possibility space so that only one module is possible for the given slot.
             This will cause many propagation events, and may cause other slots to collapse to a single module possibility as well.
             If the given slot has many module possibilities, one module will be selected at random.
             </summary>
             <param name="slot">The slot to collapse to a single module possibility</param>
-            <param name="moduleOffset">An optional offset to control which module is selected randomly. If there were N modules available, a random number is produced in the range, (0, N]. The moduleOffset is added to the random number, and then the sum is modded by N, producing a number within range. The module that will be selected is found at the modded sum.</param>
             <returns>A sequence of <see cref="T:BrewedInk.WFC.WFCProgress"/> representing the completion of the collapse operation. The resulting sequence must be enumerated, or the collapse won't complete. </returns>
         </member>
         <member name="M:BrewedInk.WFC.GenerationSpace.CollapseLowestEntropySlot">
@@ -111,10 +142,35 @@
              </summary>
              <returns></returns>
         </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.GetEntropy(BrewedInk.WFC.Slot)">
+            <summary>
+            Calculates the current entropy of a slot.
+            Entropy is roughly equal to the number of modules left in the slot's wave function. The contribution of each module is weighted by the module's weight. <see cref="F:BrewedInk.WFC.Module.Weight"/>
+            The exact entropy calculation is <code> -sum( p log(p) ) </code> over all modules where each p is the probability of the module. 
+            </summary>
+            <param name="slot">The slot to find the entropy of</param>
+            <returns>The current entropy of the slot</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.GetEntropy(BrewedInk.WFC.ModuleSet)">
+            <summary>
+            Calculates the entropy of a set of modules.
+            Entropy is <code> -sum(p log(p) )</code> over all modules where each p is the probability of the module
+            </summary>
+            <param name="modules">A set of modules</param>
+            <returns>The entropy of the given set of modules</returns>
+        </member>
         <member name="M:BrewedInk.WFC.GenerationSpace.Reset">
             <summary>
             Reset all slot superpositions so that all modules are likely again. 
             </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.GenerationSpace.Validate">
+            <summary>
+            Evaluate all constraints in the Generation Space and return the number if invalid constraints.
+            Ideally, this method should always return zero. However, you can use this to check that the constraints are indeed valid if
+            you suspect that the collapse has errored. 
+            </summary>
+            <returns>The number of broken constraints in the Generation Space.</returns>
         </member>
         <member name="M:BrewedInk.WFC.GenerationSpace.Collapse">
              <summary>
@@ -181,6 +237,11 @@
             Every module must have a unique display name. This name is used for hashing and equality checks.
             </summary>
         </member>
+        <member name="F:BrewedInk.WFC.Module.Weight">
+            <summary>
+            A module's weight controls how likely it is to be chosen randomly during a slot collapse. A module with a with a weight of zero will be never be randomly picked.
+            </summary>
+        </member>
         <member name="F:BrewedInk.WFC.Module.Constraints">
             <summary>
             Every module has a set of <see cref="T:BrewedInk.WFC.ModuleConstraint"/>. At the start of the WFC algorithm, every module is possible in all slots.
@@ -233,7 +294,7 @@
             <param name="space">The generation space that this edge and module are apart of. The space is made available so that checks can be made for other available modules at the edge source and destination slots. </param>
             <param name="module">The module-in-question. Should this module be removed from the edge source, because of the edge destination?</param>
             <param name="modulesToRemove">An advanced capability. Anything in this set will be removed from the edge source's superposition. You can manually add to the set, but only if you are extremely confident. </param>
-            <returns></returns>
+            <returns>Return true if the module should be removed from the edge's source's super position, because the constraint is invalid. Return false if the module doesn't break the constraint.</returns>
         </member>
         <member name="T:BrewedInk.WFC.SlotEdge">
             <summary>
