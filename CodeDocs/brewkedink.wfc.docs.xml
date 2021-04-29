@@ -373,22 +373,17 @@
             The destination slot of the edge. 
             </summary>
         </member>
-        <member name="T:SpriteConfig">
-            <summary>
-            A type of WFCConfigObject that lets you generate sprite modules with socket connective constraints.
-            </summary>
-        </member>
-        <member name="F:WCFConfigObject`2.useSeed">
+        <member name="F:BrewedInk.WFC.WCFConfigObject`2.useSeed">
             <summary>
             Should the <see cref="T:BrewedInk.WFC.GenerationSpace"/> instances that this instance creates use a seed?/>
             </summary>
         </member>
-        <member name="F:WCFConfigObject`2.seed">
+        <member name="F:BrewedInk.WFC.WCFConfigObject`2.seed">
             <summary>
             If the useSeed boolean is true, what seed should be used? This property should be ignored if useSeed is false.
             </summary>
         </member>
-        <member name="M:WCFConfigObject`2.TryGetObject(BrewedInk.WFC.Module,`0@)">
+        <member name="M:BrewedInk.WFC.WCFConfigObject`2.TryGetObject(BrewedInk.WFC.Module,`0@)">
             <summary>
             Given the typeless Module, get the wrapper object for it. The wrapper object may have additional metadata about the module that isn't used in the WFC algorithm, but may be useful for other parts of the game.
             </summary>
@@ -396,27 +391,52 @@
             <param name="moduleObject">The wrapper object for the Module. Or null if there is no wrapper object for the given Module</param>
             <returns>True if there was an associated wrapper object with the module, or false.</returns>
         </member>
-        <member name="M:WCFConfigObject`2.CreateSpace(BrewedInk.WFC.ModuleSet)">
+        <member name="M:BrewedInk.WFC.WCFConfigObject`2.CreateSpace(BrewedInk.WFC.ModuleSet)">
             <summary>
             You need to create a Generation Space given a set of user defined modules and configuration. 
             </summary>
             <param name="modules">the modules that have been configured from the Scriptable Object Inspector</param>
             <returns>You should return a new GenerationSpace instance that respects the seed properties. </returns>
         </member>
-        <member name="M:WCFConfigObject.Create">
+        <member name="T:BrewedInk.WFC.WCFConfigObject">
+            <summary>
+            A ScriptableObject wrapper that streamlines creating <see cref="T:BrewedInk.WFC.GenerationSpace"/> instances from MonoBehaviours. 
+            </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.WCFConfigObject.Create">
             <summary>
             Create a blank <see cref="T:BrewedInk.WFC.GenerationSpace"/> from the configuration.
             This is a useful method for creating generation spaces pre-configured with edges, slots, and modules.
             </summary>
             <returns>A new Generation Space</returns>
         </member>
-        <member name="M:WCFConfigObject.TryGetSprite(BrewedInk.WFC.Module,UnityEngine.Sprite@)">
+        <member name="M:BrewedInk.WFC.WCFConfigObject.TryGetSprite(BrewedInk.WFC.Module,UnityEngine.Sprite@)">
             <summary>
             If a module has a Sprite associated with it, you can use this method to try and get it. Depending on the type of Module, there may not be any Sprite available. 
             </summary>
             <param name="module">The module you'd like to get a sprite for.</param>
             <param name="sprite">The Sprite associated with the given module. The sprite will be null if there is no associated Sprite for the module.</param>
             <returns>True if there is any sprite associated with the module, false otherwise. If the method returns false, you can expect the sprite to be null.</returns>
+        </member>
+        <member name="T:BrewedInk.WFC.WFCGridRenderer">
+            <summary>
+            A wrapper class for displaying a helpful 2D visual for a WFC run.
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.WFCGridRenderer.config">
+            <summary>
+            Any configuration that contains sprites for previews. 
+            </summary>
+        </member>
+        <member name="F:BrewedInk.WFC.WFCGridRenderer.board">
+            <summary>
+            The sprite to use for the bounds of the board.
+            </summary>
+        </member>
+        <member name="T:SpriteConfig">
+            <summary>
+            A type of WFCConfigObject that lets you generate sprite modules with socket connective constraints.
+            </summary>
         </member>
     </members>
 </doc>

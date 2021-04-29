@@ -64,9 +64,23 @@ A progress instance that explains what module was removed from a slot's possibil
 A progress instance that explains what module was selected for a slot. When this progress type shows up, it means the superposition for the given slot has collapsed to the given module.  
 
 ***
+[WCFConfigObject](WCFConfigObject.md 'BrewedInk.WFC.WCFConfigObject')
+
+A ScriptableObject wrapper that streamlines creating [GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace') instances from MonoBehaviours.   
+
+***
+[WCFConfigObject&lt;TModuleObject,TModule&gt;](WCFConfigObject_TModuleObject_TModule_.md 'BrewedInk.WFC.WCFConfigObject&lt;TModuleObject,TModule&gt;')
+
+
+***
 [WFCError](WFCError.md 'BrewedInk.WFC.WFCError')
 
 A WFCError instance could be returned by the WFC algorithm. If you receive one of these instances, it means something with the process has broken.  
+
+***
+[WFCGridRenderer](WFCGridRenderer.md 'BrewedInk.WFC.WFCGridRenderer')
+
+A wrapper class for displaying a helpful 2D visual for a WFC run.  
 
 ***
 [WFCProgress](WFCProgress.md 'BrewedInk.WFC.WFCProgress')

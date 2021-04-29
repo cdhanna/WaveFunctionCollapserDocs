@@ -1,5 +1,5 @@
 #### [brewkedink.wfc](index.md 'index')
-### [](.md '').[WCFConfigObject](WCFConfigObject.md 'WCFConfigObject')
+### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[WCFConfigObject](WCFConfigObject.md 'BrewedInk.WFC.WCFConfigObject')
 ## WCFConfigObject.Create() Method
 Create a blank [GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace') from the configuration.  
 This is a useful method for creating generation spaces pre-configured with edges, slots, and modules.  

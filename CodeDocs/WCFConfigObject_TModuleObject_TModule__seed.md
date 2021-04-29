@@ -1,5 +1,5 @@
 #### [brewkedink.wfc](index.md 'index')
-### [](.md '').[WCFConfigObject&lt;TModuleObject,TModule&gt;](WCFConfigObject_TModuleObject_TModule_.md 'WCFConfigObject&lt;TModuleObject,TModule&gt;')
+### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[WCFConfigObject&lt;TModuleObject,TModule&gt;](WCFConfigObject_TModuleObject_TModule_.md 'BrewedInk.WFC.WCFConfigObject&lt;TModuleObject,TModule&gt;')
 ## WCFConfigObject&lt;TModuleObject,TModule&gt;.seed Field
 If the useSeed boolean is true, what seed should be used? This property should be ignored if useSeed is false.  
 ```csharp
