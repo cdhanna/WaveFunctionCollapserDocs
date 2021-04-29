@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## Module Class
 In the WFC algorithm, a module is a possibility for some [Slot](Slot.md 'BrewedInk.WFC.Slot')

@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.GenerationSpace(List&lt;Slot&gt;, List&lt;SlotEdge&gt;, ModuleSet, Nullable&lt;int&gt;) Constructor
 Create a new instance of the WFC algorithm. Each time you construct an instance of the Generation Space, you are setting up a new superposition with nothing collapsed.  

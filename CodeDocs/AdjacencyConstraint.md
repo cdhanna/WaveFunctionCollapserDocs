@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## AdjacencyConstraint Class
 A WFC constraint that enforces neighboring modules per slot.  

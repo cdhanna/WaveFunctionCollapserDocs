@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.GetSlotOptions(Slot) Method
 At any given moment, a slot may have many possible modules available to it. This method will give you the set of possible modules available on a slot.  

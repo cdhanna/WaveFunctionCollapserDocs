@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.GetEntropy(ModuleSet) Method
 Calculates the entropy of a set of modules.  

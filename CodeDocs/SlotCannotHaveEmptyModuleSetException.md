@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## SlotCannotHaveEmptyModuleSetException Class
 An exception that is thrown when the WFC tries to remove the last remaining module from a slot's possibility space. A slot cannot have zero possibilities.  

@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## ModuleConstraint Class
 The base type for all WFC constraints. Feel free to subclass this type and make your own constraints.   

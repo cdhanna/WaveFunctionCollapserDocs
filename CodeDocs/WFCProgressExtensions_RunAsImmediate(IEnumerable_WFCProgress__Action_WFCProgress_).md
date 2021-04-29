@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[WFCProgressExtensions](WFCProgressExtensions.md 'BrewedInk.WFC.WFCProgressExtensions')
 ## WFCProgressExtensions.RunAsImmediate(IEnumerable&lt;WFCProgress&gt;, Action&lt;WFCProgress&gt;) Method
 Completely iterate through a WFC operation in one frame. Using this method will likely cause lag in your game, and it is only recommended for testing or advanced use.  

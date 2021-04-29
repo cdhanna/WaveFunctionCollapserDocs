@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[Module](Module.md 'BrewedInk.WFC.Module')
 ## Module.Constraints Field
 Every module has a set of [ModuleConstraint](ModuleConstraint.md 'BrewedInk.WFC.ModuleConstraint'). At the start of the WFC algorithm, every module is possible in all slots.  

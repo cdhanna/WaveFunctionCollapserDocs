@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## SlotCannotSelectUnavailableModule Class
 An exception that is thrown if a slot tries to select a module that is no longer possible, due to constraints.  

@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## Slot Class
 In the WFC algorithm, a Slot is a place that holds one [Module](Module.md 'BrewedInk.WFC.Module'). As the Wave Function is being collapsed, the slot may have many potential modules available to it.  

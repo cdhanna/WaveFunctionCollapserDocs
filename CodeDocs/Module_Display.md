@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[Module](Module.md 'BrewedInk.WFC.Module')
 ## Module.Display Field
 Every module must have a unique display name. This name is used for hashing and equality checks.  

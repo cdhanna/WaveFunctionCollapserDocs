@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[Slot](Slot.md 'BrewedInk.WFC.Slot')
 ## Slot.Coordinate Field
 The slot's position in the larger generation space.   

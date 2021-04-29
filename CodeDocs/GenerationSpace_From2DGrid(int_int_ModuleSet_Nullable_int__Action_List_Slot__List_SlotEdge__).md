@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.From2DGrid(int, int, ModuleSet, Nullable&lt;int&gt;, Action&lt;List&lt;Slot&gt;,List&lt;SlotEdge&gt;&gt;) Method
 A utility method for building a Generation Space in the form of a 2D grid.  

@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## ModuleSet Class
 A ModuleSet is a collection of modules. It is a HashSet, with a few helpful methods attached to it.   

@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## WFCError Class
 A WFCError instance could be returned by the WFC algorithm. If you receive one of these instances, it means something with the process has broken.  

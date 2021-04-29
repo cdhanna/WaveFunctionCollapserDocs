@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.CollapseLowestEntropySlot() Method
 Collapse the superposition of some slot. The slot that is selected is the slot in the Generation Space with the lowest entropy. A Slot's entropy is found by taking the count of available modules remaining at the slot.  

@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.TryGetOnlyOption(Slot, Module) Method
 At any given moment, a slot may have many possible modules available to it. However, eventually, a slot will only have one possible module remaining.  

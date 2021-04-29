@@ -61,22 +61,78 @@
             The module that has been selected for the given slot
             </summary>
         </member>
+        <member name="T:BrewedInk.WFC.WFCProgressObserver">
+            <summary>
+            A wrapper class around the invocation of a WFC collapse operation.
+            You should use this in conjunction with 
+            </summary>
+        </member>
+        <member name="P:BrewedInk.WFC.WFCProgressObserver.ProgressCount">
+            <summary>
+            The number of progress events received for this operation. There isn't a knowable upper bound, but you can use this to track that progress is happening.
+            </summary>
+        </member>
+        <member name="P:BrewedInk.WFC.WFCProgressObserver.IsComplete">
+            <summary>
+            Returns true when the operation is complete. This will be true the instant BEFORE the onComplete callbacks are invoked.
+            </summary>
+        </member>
+        <member name="P:BrewedInk.WFC.WFCProgressObserver.SlotSelections">
+            <summary>
+            A set of selections you can use inspect to see what has finished. If you want an event driven approach, use <see cref="M:BrewedInk.WFC.WFCProgressObserver.OnSelectedModule(System.Action{BrewedInk.WFC.SlotModuleSelected})"/>
+            </summary>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressObserver.OnProgress(System.Action{BrewedInk.WFC.WFCProgress})">
+            <summary>
+            A callback that executes anytime the WFC has new progress. Progress elements can represent a module being removed, or a module being selected, an error, or a general propagation of data.
+            </summary>
+            <param name="onProgress">A callback to run on progress</param>
+            <returns>The same WFCProgressObserver</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressObserver.OnCompleted(System.Action)">
+            <summary>
+            A callback that executes when the WFC operation has completed. This happens right after the <see cref="!:WFCProgressObserver.OnComplete"/> is set to true.
+            </summary>
+            <param name="onComplete">a callback to run on completion</param>
+            <returns>The same WFCProgressObserver</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressObserver.OnSelectedModule(System.Action{BrewedInk.WFC.SlotModuleSelected})">
+            <summary>
+            A callback that executes anytime a slot collapses to a single module possibility. This is a type of <see cref="T:BrewedInk.WFC.WFCProgress"/>, and will execute right after the <see cref="M:BrewedInk.WFC.WFCProgressObserver.OnProgress(System.Action{BrewedInk.WFC.WFCProgress})"/> callbacks
+            </summary>
+            <param name="selection">A callback that takes a general selection. The module isn't typed, so you'll need to type-check it.</param>
+            <returns>The same WFCProgressObserver</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressObserver.OnSelectedModule(System.Action{BrewedInk.WFC.Slot,BrewedInk.WFC.Module})">
+            <summary>
+            A callback that executes anytime a slot collapses to a single module possibility. This is a type of <see cref="T:BrewedInk.WFC.WFCProgress"/>, and will execute right after the <see cref="M:BrewedInk.WFC.WFCProgressObserver.OnProgress(System.Action{BrewedInk.WFC.WFCProgress})"/> callbacks
+            </summary>
+            <param name="selection">A callback that takes a slot and a general selection. The module isn't typed, so you'll need to type-check it.</param>
+            <returns>The same WFCProgressObserver</returns>
+        </member>
+        <member name="M:BrewedInk.WFC.WFCProgressObserver.OnSelectedModule``1(System.Action{BrewedInk.WFC.Slot,``0})">
+            <summary>
+            A callback that executes anytime a slot collapses to a single module possibility. This is a type of <see cref="T:BrewedInk.WFC.WFCProgress"/>, and will execute right after the <see cref="M:BrewedInk.WFC.WFCProgressObserver.OnProgress(System.Action{BrewedInk.WFC.WFCProgress})"/> callbacks
+            </summary>
+            <param name="selection">A callback that takes a slot and typed module. This callback only fires when a module of the given type is selected</param>
+            <typeparam name="TModule">the type of module this callback applies for. </typeparam>
+            <returns>The same WFCProgressObserver</returns>
+        </member>
         <member name="T:BrewedInk.WFC.WFCProgressExtensions">
             <summary>
             A Utility class for IEnumerable sets of <see cref="T:BrewedInk.WFC.WFCProgress"/>
             </summary>
         </member>
-        <member name="M:BrewedInk.WFC.WFCProgressExtensions.RunAsCoroutine(System.Collections.Generic.IEnumerable{BrewedInk.WFC.WFCProgress},UnityEngine.MonoBehaviour,System.Single,System.Action{BrewedInk.WFC.WFCProgress},System.Action)">
+        <member name="M:BrewedInk.WFC.WFCProgressExtensions.RunAsCoroutine(System.Collections.Generic.IEnumerable{BrewedInk.WFC.WFCProgress},UnityEngine.MonoBehaviour,System.Single)">
             <summary>
             A method to run any WFC operation within a Unity Coroutine with frame time budgeting. This method will process as many elements in the WFC operation as possible in on frame, then yield a render frame, and continue the operation on the next frame.
             This is the recommended way to run WFC operations in a realtime game.
+            This returns a <see cref="T:BrewedInk.WFC.WFCProgressObserver"/> object which you can attach progress callbacks and inspect the running state.
             </summary>
             <param name="operation">Any WFC operation. This could be the return value from any Collapse related function in the <see cref="T:BrewedInk.WFC.GenerationSpace"/></param>
             <param name="context">Some Monobehaviour to run the Coroutine in.</param>
             <param name="timeBudgetPerFrame">How much is available per frame to operate on the WFC sequence? This should be a low number, so that it doesn't cause hitches in your game.</param>
-            <param name="onProgress">An optional callback that runs every time a WFCProgress element is processed.</param>
-            <param name="onCompleted">An optional callback that runs when the Coroutine has finished processing the WFC operation</param>
-            <returns></returns>
+            <returns>a WFCProgressObserver</returns>
         </member>
         <member name="M:BrewedInk.WFC.WFCProgressExtensions.RunAsImmediate(System.Collections.Generic.IEnumerable{BrewedInk.WFC.WFCProgress},System.Action{BrewedInk.WFC.WFCProgress})">
             <summary>
@@ -316,6 +372,51 @@
             <summary>
             The destination slot of the edge. 
             </summary>
+        </member>
+        <member name="T:SpriteConfig">
+            <summary>
+            A type of WFCConfigObject that lets you generate sprite modules with socket connective constraints.
+            </summary>
+        </member>
+        <member name="F:WCFConfigObject`2.useSeed">
+            <summary>
+            Should the <see cref="T:BrewedInk.WFC.GenerationSpace"/> instances that this instance creates use a seed?/>
+            </summary>
+        </member>
+        <member name="F:WCFConfigObject`2.seed">
+            <summary>
+            If the useSeed boolean is true, what seed should be used? This property should be ignored if useSeed is false.
+            </summary>
+        </member>
+        <member name="M:WCFConfigObject`2.TryGetObject(BrewedInk.WFC.Module,`0@)">
+            <summary>
+            Given the typeless Module, get the wrapper object for it. The wrapper object may have additional metadata about the module that isn't used in the WFC algorithm, but may be useful for other parts of the game.
+            </summary>
+            <param name="module">The module you want to get the wrapper object for</param>
+            <param name="moduleObject">The wrapper object for the Module. Or null if there is no wrapper object for the given Module</param>
+            <returns>True if there was an associated wrapper object with the module, or false.</returns>
+        </member>
+        <member name="M:WCFConfigObject`2.CreateSpace(BrewedInk.WFC.ModuleSet)">
+            <summary>
+            You need to create a Generation Space given a set of user defined modules and configuration. 
+            </summary>
+            <param name="modules">the modules that have been configured from the Scriptable Object Inspector</param>
+            <returns>You should return a new GenerationSpace instance that respects the seed properties. </returns>
+        </member>
+        <member name="M:WCFConfigObject.Create">
+            <summary>
+            Create a blank <see cref="T:BrewedInk.WFC.GenerationSpace"/> from the configuration.
+            This is a useful method for creating generation spaces pre-configured with edges, slots, and modules.
+            </summary>
+            <returns>A new Generation Space</returns>
+        </member>
+        <member name="M:WCFConfigObject.TryGetSprite(BrewedInk.WFC.Module,UnityEngine.Sprite@)">
+            <summary>
+            If a module has a Sprite associated with it, you can use this method to try and get it. Depending on the type of Module, there may not be any Sprite available. 
+            </summary>
+            <param name="module">The module you'd like to get a sprite for.</param>
+            <param name="sprite">The Sprite associated with the given module. The sprite will be null if there is no associated Sprite for the module.</param>
+            <returns>True if there is any sprite associated with the module, false otherwise. If the method returns false, you can expect the sprite to be null.</returns>
         </member>
     </members>
 </doc>

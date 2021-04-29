@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## SlotModuleSelected Class
 A progress instance that explains what module was selected for a slot. When this progress type shows up, it means the superposition for the given slot has collapsed to the given module.  

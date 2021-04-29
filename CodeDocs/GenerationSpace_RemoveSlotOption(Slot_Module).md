@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ## GenerationSpace.RemoveSlotOption(Slot, Module) Method
 A small way to collapse the wave function. At some given slot, this method removes some given module from the set of possible modules at the slot.  

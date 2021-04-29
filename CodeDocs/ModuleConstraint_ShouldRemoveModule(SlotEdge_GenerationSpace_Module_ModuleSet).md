@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC').[ModuleConstraint](ModuleConstraint.md 'BrewedInk.WFC.ModuleConstraint')
 ## ModuleConstraint.ShouldRemoveModule(SlotEdge, GenerationSpace, Module, ModuleSet) Method
 The only required method of a WFC constraint.  

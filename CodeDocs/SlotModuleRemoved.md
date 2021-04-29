@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## SlotModuleRemoved Class
 A progress instance that explains what module was removed from a slot's possibility space.  

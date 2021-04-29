@@ -1,3 +1,4 @@
+#### [brewkedink.wfc](index.md 'index')
 ## BrewedInk.WFC Namespace
 ### Classes
 
@@ -78,3 +79,9 @@ Different types of progress will be returned, and you can switch on the type to 
 [WFCProgressExtensions](WFCProgressExtensions.md 'BrewedInk.WFC.WFCProgressExtensions')
 
 A Utility class for IEnumerable sets of [WFCProgress](WFCProgress.md 'BrewedInk.WFC.WFCProgress')
+
+***
+[WFCProgressObserver](WFCProgressObserver.md 'BrewedInk.WFC.WFCProgressObserver')
+
+A wrapper class around the invocation of a WFC collapse operation.  
+You should use this in conjunction with   
