@@ -2,7 +2,7 @@
 ### [BrewedInk.WFC](BrewedInk_WFC.md 'BrewedInk.WFC')
 ## WFCProgressObserver Class
 A wrapper class around the invocation of a WFC collapse operation.  
-You should use this in conjunction with   
+You should use this in conjunction with [RunAsCoroutine(IEnumerable&lt;WFCProgress&gt;, MonoBehaviour, float)](WFCProgressExtensions_RunAsCoroutine(IEnumerable_WFCProgress__MonoBehaviour_float).md 'BrewedInk.WFC.WFCProgressExtensions.RunAsCoroutine(System.Collections.Generic.IEnumerable&lt;BrewedInk.WFC.WFCProgress&gt;, UnityEngine.MonoBehaviour, float)')
 ```csharp
 public class WFCProgressObserver
 ```

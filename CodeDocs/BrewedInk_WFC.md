@@ -98,4 +98,4 @@ A Utility class for IEnumerable sets of [WFCProgress](WFCProgress.md 'BrewedInk.
 [WFCProgressObserver](WFCProgressObserver.md 'BrewedInk.WFC.WFCProgressObserver')
 
 A wrapper class around the invocation of a WFC collapse operation.  
-You should use this in conjunction with   
+You should use this in conjunction with [RunAsCoroutine(IEnumerable&lt;WFCProgress&gt;, MonoBehaviour, float)](WFCProgressExtensions_RunAsCoroutine(IEnumerable_WFCProgress__MonoBehaviour_float).md 'BrewedInk.WFC.WFCProgressExtensions.RunAsCoroutine(System.Collections.Generic.IEnumerable&lt;BrewedInk.WFC.WFCProgress&gt;, UnityEngine.MonoBehaviour, float)')

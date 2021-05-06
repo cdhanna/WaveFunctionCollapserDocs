@@ -64,7 +64,7 @@
         <member name="T:BrewedInk.WFC.WFCProgressObserver">
             <summary>
             A wrapper class around the invocation of a WFC collapse operation.
-            You should use this in conjunction with 
+            You should use this in conjunction with <see cref="M:BrewedInk.WFC.WFCProgressExtensions.RunAsCoroutine(System.Collections.Generic.IEnumerable{BrewedInk.WFC.WFCProgress},UnityEngine.MonoBehaviour,System.Single)"/>
             </summary>
         </member>
         <member name="P:BrewedInk.WFC.WFCProgressObserver.ProgressCount">
