@@ -8,9 +8,6 @@ The [Wave Function Collapse](../../wiki/Wave-Function-Collapse 'Overview') algor
 - [Code Docs](./CodeDocs/GenerationSpace.md 'Code docs')
 - [Getting Started](../../wiki/Getting-Started 'Getting Started')
 - Examples
-    - Ascii Roads
-    - Soduko
-    - Spritemaps
-
-- Helpful Resources
-- Help
+    - Socket based constraints - Roads
+    - Color based constraints - Simple World
+    - Code based constraints - Sudoku
