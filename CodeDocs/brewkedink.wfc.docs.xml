@@ -391,11 +391,10 @@
             <param name="moduleObject">The wrapper object for the Module. Or null if there is no wrapper object for the given Module</param>
             <returns>True if there was an associated wrapper object with the module, or false.</returns>
         </member>
-        <member name="M:BrewedInk.WFC.WCFConfigObject`2.CreateSpace(BrewedInk.WFC.ModuleSet)">
+        <member name="M:BrewedInk.WFC.WCFConfigObject`2.CreateSpace">
             <summary>
             You need to create a Generation Space given a set of user defined modules and configuration. 
             </summary>
-            <param name="modules">the modules that have been configured from the Scriptable Object Inspector</param>
             <returns>You should return a new GenerationSpace instance that respects the seed properties. </returns>
         </member>
         <member name="T:BrewedInk.WFC.WCFConfigObject">

@@ -32,7 +32,7 @@ Should the [GenerationSpace](GenerationSpace.md 'BrewedInk.WFC.GenerationSpace')
 ### Methods
 
 ***
-[CreateSpace(ModuleSet)](WCFConfigObject_TModuleObject_TModule__CreateSpace(ModuleSet).md 'BrewedInk.WFC.WCFConfigObject&lt;TModuleObject,TModule&gt;.CreateSpace(BrewedInk.WFC.ModuleSet)')
+[CreateSpace()](WCFConfigObject_TModuleObject_TModule__CreateSpace().md 'BrewedInk.WFC.WCFConfigObject&lt;TModuleObject,TModule&gt;.CreateSpace()')
 
 You need to create a Generation Space given a set of user defined modules and configuration.   
 
